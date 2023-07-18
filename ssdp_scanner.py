@@ -7,24 +7,10 @@ import threading
 import random
 import time
 from threading import Thread
- 
- 
-########################
-#Here is a small list of commands that can help you sort your list:
- 
-#This command removes the length of the responce and puts the output in line-by-line list format:
- 
-#cat scannedlist.txt | awk '{print $1}' | sort -u | sort -R > output.txt
- 
-#This next command sorts for all packets over 300 byte reply size and saves the output to a list:
-#cat scannedlist.txt | awk '$2 > 300' | awk 'print $1' | sort -u | sort -R > output.txt
- 
-#This next command sorts for all reflectors that replyed with 10 or more packets (this is my favorite):
-#cat scannedlist.txt | sort | uniq -c | awk '$2 > 10' | awk 'print $2' | sort -u | sort -R > output.txt
-########################
+
  
 if len (sys.argv) != 4:
-        print "Usage: ./" + sys.argv[0] + " [ip-start] [ip-end] [output]\n      Notice: This script requires Scapy (available with apt-get or yum installs\n    Notice: THIS HAS ONLY BEEN TESTED ON A DEDICATED SERVER VPS's MAY NOT WORK.\n   V.1.0 Made by XXX"
+        print "Usage: ./" + sys.argv[0] + " [ip-start] [ip-end] [output]\n      Notice: This script requires Scapy (available with apt-get or yum installs\n    Notice: THIS HAS ONLY BEEN TESTED ON A DEDICATED SERVER VPS's MAY NOT WORK.\n   V.1.0 Made by Valentino"
         sys.exit()
  
 mydestport = random.randint(400,65535)
@@ -173,9 +159,9 @@ if __name__ == '__main__':
                 print "Thread re-joined"
  
         #Vaibs
-        #give time for last host to respond, this isn't
-        #perfect but provides a way for application to exit
-        #cleanly. Adjust time as necessary
+        # Wait for the host to give a response
+        # Provides way of exiting the application
+        # Adjusting the time, need help? t.me/recase
        
         print "Allowing time for remaining packets to return...\n"
         time.sleep(5)
